@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jan 29 00:19:51 2018
+
+@author: Mario
+"""
+
+import datetime
+import calendar
+
+#Danasnji dan
+today=datetime.date.today()
+
+#Dana u trenutnom mjesec
+days_in_current_month=calendar.monthrange(today.year, today.month)[1]
+
+#Dana do kraja mjeseca
+days_till_end_month=days_in_current_month-today.day
+
+#Prvi dan u sljedecem mjesecu
+start_date=today + datetime.timedelta(days=days_till_end_month+1)
+
+#Datum nakon svakih n dana do odredenog datuma
+def kojiDatumJe(pocetniDatum, dana, doDana):
+    a=0
+    while pocetniDatum<doDana:
+        a+=1
+        pocetniDatum +=datetime.timedelta(dana)
+        print("{0}. {1}".format(a,pocetniDatum))
+
+"""Potrebno je korisiti datetime.date() npr.:
+kojiDatumJe(datetime.date(2018,2,15),12,datetime.date(2018,8,15))
+"""
